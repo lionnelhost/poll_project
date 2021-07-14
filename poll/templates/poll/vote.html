@@ -5,54 +5,49 @@
 
 {% block main %}
 <div class="row">
-    <div class="col-lg-8 col-lg-offset-2">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Cast Your Vote</h3>
+    <div class="col-md-2 col-lg-2 col-sm-12"></div>
+    <div class="col-lg-8 col-md-8 col-sm-12">
+        <a type="button" href="{% url 'home' %}"  class="btn btn-outline-primary back-to-home">Back to Home</a>
+        <div class="card" style="width: 100%;">
+            <div class="card-header">
+                <h4>{{ poll.question }}</h4>
             </div>
-
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h2>{{ poll.question }}</h2>
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadio1" id="option1">
+                            <label class="form-check-label" for="option1">
+                                {{ poll.option_one }}
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadio2" id="option2">
+                            <label class="form-check-label" for="option2">
+                                {{ poll.option_two }}
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadio3" id="option3">
+                            <label class="form-check-label" for="option3">
+                                {{ poll.option_three }}
+                            </label>
+                        </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-lg-12">
-                        <hr />
+                    <hr />
 
-                        <form method="POST">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="poll" value="option1" required>
-                                        {{ poll.option_one }}
-                                    </label> &nbsp;
-                                    <label>
-                                        <input type="radio" name="poll" value="option2">
-                                        {{ poll.option_two }}
-                                    </label> &nbsp;
-                                    <label>
-                                        <input type="radio" name="poll" value="option3">
-                                        {{ poll.option_three }}
-                                    </label> &nbsp;
-                                </div>
-                            </div>
-
-                            <hr />
-
-                            <a href="{% url 'home' %}" class="btn btn-default">Cancel</a>
-                            <button type="submit" class="btn btn-info">
-                                Submit
-                            </button>
-                        </form>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{% url 'home' %}" class="btn btn-outline-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-primary">
+                            Submit
+                        </button>
                     </div>
-                </div>
+                </form>
             </div>
-
         </div>
     </div>
+    <div class="col-md-2 col-lg-2 col-sm-12"></div>
 </div>
 {% endblock %}

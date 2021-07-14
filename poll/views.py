@@ -6,7 +6,7 @@ from .models import Poll
 from django.contrib import messages
 
 
-def home(request):
+def homes(request):
     polls = Poll.objects.all()
 
     context = {
@@ -19,6 +19,9 @@ def create(request):
     if request.method == 'POST':
         form = CreatePollForm(request.POST)
         if form.is_valid:
+            # new_poll = form.save(commit=False)
+            # new_poll.author = request.user
+            # new_poll.save()
             form.save()
             messages.success(request, 'Poll created with success!')
             return redirect('home')

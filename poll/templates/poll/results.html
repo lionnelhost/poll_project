@@ -5,28 +5,46 @@
 
 {% block main %}
 <div class="row">
-    <div class="col-lg-8 col-lg-offset-2">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Poll Result</h3>
+    <div class="col-md-2 col-lg-2 col-sm-12"></div>
+    <div class="col-lg-8 col-md-8 col-sm-12">
+        <a type="button" href="{% url 'home' %}"  class="btn btn-outline-primary back-to-home">Back to Home</a>
+        <div class="card" style="width: 100%;">
+            <div class="card-header">
+                Poll Result
             </div>
 
-            <div class="panel-body">
-                <h3>Which language is easier to learn?</h3>
+            <div class="card-body">
+                <div class="card-title"> {{ poll.question }}</div>
             </div>
 
-            <ul class="list-group">
-                <li class="list-group-item">{{ poll.option_one }} &mdash; <strong>{{ poll.option_one_count }}</strong></li>
-                <li class="list-group-item">{{ poll.option_two }} &mdash; <strong>{{ poll.option_two_count }}</strong></li>
-                <li class="list-group-item">{{ poll.option_three }} &mdash; <strong>{{ poll.option_three_count }}</strong></li>
+            <ul class="list-group list-group-numbered">
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">{{ poll.option_one }}</div>
+                    </div>
+                    <span class="badge bg-primary rounded-pill">{{ poll.option_one_count }}</span>
+                </li>
+
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">{{ poll.option_two }}</div>
+                    </div>
+                    <span class="badge bg-primary rounded-pill">{{ poll.option_two_count }}</span>
+                </li>
+
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">{{ poll.option_two }}</div>
+                    </div>
+                    <span class="badge bg-primary rounded-pill">{{ poll.option_three_count }}</span>
+                </li>
             </ul>
 
-            <div class="panel-footer">
+            <div class="card-footer text-muted">
                 Total &mdash; <strong>{{ poll.total }}</strong>
             </div>
-
         </div>
-        <a href="{% url 'home' %}" class="btn btn-default">back to home</a>
     </div>
+    <div class="col-md-2 col-lg-2 col-sm-12"></div>
 </div>
 {% endblock %}

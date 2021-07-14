@@ -5,21 +5,24 @@
 {% block title %}Update Poll{% endblock %}
 
 {% block main %}
-<div class="row">
-    <div class="col-lg-8 col-lg-offset-2">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Update A Poll</h3>
-            </div>
 
+
+<div class="row">
+    <div class="col-md-2 col-lg-2 col-sm-12"></div>
+    <div class="col-lg-8 col-md-8 col-sm-12">
+        <a type="button" href="{% url 'home' %}"  class="btn btn-outline-primary back-to-home">Back to Home</a>
+        <div class="card" style="width: 100%;">
+            <div class="card-header">
+                <h3>Create A New Poll</h3>
+            </div>
             <form method="POST">
                 {% csrf_token %}
-                <div class="panel-body">
+                <div class="card-body">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label for="question">{{ poll.question }}</label>
-                                {% render_field form.question rows="3" class="form-control"  %}
+                                <label for="question">Enter Poll Question</label>
+                                {% render_field form.question rows="3" class="form-control" %}
                             </div>
                         </div>
                     </div>
@@ -28,7 +31,7 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="option1">Option 1</label>
-                                {% render_field form.option_one class="form-control"  %}
+                                {% render_field form.option_one class="form-control" %}
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -48,14 +51,18 @@
                     <div class="row">
                         <hr />
                         <div class="col-lg-4">
-                            <button type="submit" class="btn btn-info">Update</button>
-                            <a href="{% url 'home' %}" class="btn btn-default">Cancel</a>
+                            <a type="submit" class="btn btn-primary">Submit</a>
+                            <a href="{% url 'home' %}" class="btn btn-outline-secondary">back to home</a>
                         </div>
                     </div>
                 </div>
             </form>
 
+            <div class="card-footer text-muted">
+                Total &mdash; <strong>{{ poll.total }}</strong>
+            </div>
         </div>
     </div>
+    <div class="col-md-2 col-lg-2 col-sm-12"></div>
 </div>
 {% endblock %}
