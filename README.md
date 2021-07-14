@@ -1,6 +1,14 @@
 # poll_project
 App for poll create with Django
 
+We have Four main features : 
+
+- list all polls 
+- create a poll 
+- update a poll 
+- delete a poll 
+- add a vote on specific poll
+
 # Pictures 
 
 <img width="1680" alt="Capture d’écran 2021-07-14 à 12 41 25" src="https://user-images.githubusercontent.com/79100021/125623776-49ed9aad-e729-48e1-af36-92ec729fccb8.png">
